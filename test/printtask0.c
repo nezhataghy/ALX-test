@@ -87,10 +87,20 @@ int print_int(va_list in)
 
 int print_bin(va_list in)
 {
-	int n = va_arg(in, int);
+	int count, i, n = va_arg(in, int);
+	int arr[31];
 
-	if (n > 1)
-		print_bin(n / 2);
-
-    _printf("%d", n % 2);
+	for (i = 0; i < 32; i++)
+		arr[i] = '\0';
+	for (i = 0; i < 32 && (n > 1); i++)
+	{
+		arr[i] = (n % 2);
+		n = (n / 2);
+	}
+	for (i = 31; i >= 0 && (arr[i] != '\0'); i--)
+	{
+		_printf("%d", arr[i]);
+		count++;
+	}
+return (count);
 }
