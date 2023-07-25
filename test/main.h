@@ -42,4 +42,10 @@ int print_bin(va_list in);
 /*prints an unsigned integer*/
 int print_u_int(va_list in);
 
+int print_octal(va_list in);
+
+char *rev_string(char *s);
+
+char *_memcpy(char *dest, char *src, unsigned int n);
+
 #endif

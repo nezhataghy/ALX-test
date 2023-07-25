@@ -28,5 +28,7 @@ int main(void)
     _printf("%b\n", 98);
     _printf("Unsigned:[%u]\n", ui);
     printf("Unsigned:[%u]\n", ui);
+    _printf("Unsigned octal:[%o]\n", ui);
+    printf("Unsigned octal:[%o]\n", ui);
     return (0);
 }
