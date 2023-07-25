@@ -20,6 +20,7 @@ int print_string(va_list s)
 	}
 	return (i);
 }
+
 /**
  * print_char - function that prints a character
  * @c: the variadic argument from the printf function
@@ -27,7 +28,7 @@ int print_string(va_list s)
 **/
 int print_char(va_list c)
 {
-	char character = va_arg(c, int);
+	char character = (char) va_arg(c, int);
 
 	_putchar (character);
 
@@ -35,26 +36,61 @@ int print_char(va_list c)
 }
 
 /**
- * print_number - prints the input number
- * @n: input
- * Return: amount of num printed
+ * print_int - prints integer
+ * @in: argument to print
+ * Return: number of characters printed
 */
-int print_number(va_list n)
-{
-long int num = va_arg(n, long int);
-int i = 0;
 
-if (num < 0)
+int print_int(va_list in)
 {
-	_putchar(45);
-	num = -num;
+	int n = va_arg(in, int);
+	int num, last = n % 10, digit, ex = 1;
+	int  i = 1;
+
+	n /= 10;
+	num = n;
+
+	if (last < 0)
+	{
+		_putchar('-');
+		num = -num;
+		n = -n;
+		last = -last;
+		i++;
+	}
+	if (num > 0)
+	{
+		while (num / 10 != 0)
+		{
+			ex *= 10;
+			num /= 10;
+		}
+		num = n;
+		while (ex > 0)
+		{
+			digit = num / ex;
+			_putchar(digit + '0');
+			num = num - (digit * ex);
+			ex /= 10;
+			i++;
+		}
+	}
+	_putchar(last + '0');
+	return (i);
 }
-if ((num / 10) > 0)
+
+/**
+ * print_bin - prints integer converted to bin
+ * @in: argument to print
+ * Return: number of characters printed
+*/
+
+int print_bin(va_list in)
 {
-	i++;
-	print_number(num / 10);
-}
-_putchar(48 + (num % 10));
-i++;
-return (i);
+	int n = va_arg(in, int);
+
+	if (n > 1)
+		print_bin(n / 2);
+
+    _printf("%d", n % 2);
 }

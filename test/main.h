@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <limits.h>
 /**
- * struct special_cases 
+ * struct special_cases - structure
  * @match: the special character to match after find a percentage
  * @function: the associated function to be called in each specialcase
 */
@@ -34,5 +34,9 @@ int print_char(va_list c);
 int print_string(va_list s);
 
 /*prints a number*/
-int print_number(va_list n);
+int print_int(va_list in);
+
+/*prints a number converted to binary*/
+int print_bin(va_list in);
+
 #endif

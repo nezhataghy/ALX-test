@@ -9,9 +9,12 @@ int (*mod_character_s(const char *next, int dino))(va_list)
 {
 	int i;
 	spc_t options[] = {
-		{"s", print_string},{"c", print_char},
-		{"i", print_number},{"d", print_number},
-		{'\0', NULL}
+		{"s", print_string},
+		{"c", print_char},
+		{"d", print_int},
+		{"i", print_int},
+		{"b", print_bin},
+		{NULL, NULL}
 	};
 
 	for (i = 0; options[i].match != NULL; i++)
